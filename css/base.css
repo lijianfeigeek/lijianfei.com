@@ -1,0 +1,124 @@
+body, h1 {
+    margin: 0;
+    word-break: break-word;
+}
+
+body, header, h1, div, span, a {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Helvetica Neue', Helvetica;
+    color: #1f2f3d;
+    /* 解决侧边滑动引起界面抖动 */
+    overflow-y:scroll;
+}
+
+footer {
+    font-size: 15px;
+    margin-top: 100px;
+    text-align: right;
+    padding: 10px 10px 100px 10px;
+}
+
+a:link, a:visited {
+    color: #1f2f3d;
+}
+
+.layout {
+    min-width: 300px;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 10px;
+    position: relative;
+}
+
+.float-right {
+    float: right;
+}
+
+.float-left {
+    float: left;
+}
+
+.clearfix:before, .clearfix:after {
+    content: "";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix {
+    /*照顾ie6*/
+    zoom: 1;
+}
+/* 隐藏到显示 */
+@keyframes op {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* 等待动画 */
+.loading {
+    height: 50px;
+    width: 100%;    
+    text-align: center;
+}
+
+.circle {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+    background-color: #f9f9f9;
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, .30);
+    display: inline-block
+}
+
+.circular {
+    animation: rotate 2s linear infinite;
+    transform-origin: center center;
+    height: 80%;    
+    width: 80%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
+
+  .path {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+    animation: dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite;
+    stroke-linecap: round;
+    stroke:black;
+  }
+  
+  @keyframes rotate {
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes dash {
+    0% {
+      stroke-dasharray: 1, 200;
+      stroke-dashoffset: 0;
+    }
+    50% {
+      stroke-dasharray: 89, 200;
+      stroke-dashoffset: -35px;
+    }
+    100% {
+      stroke-dasharray: 89, 200;
+      stroke-dashoffset: -124px;
+    }
+  }

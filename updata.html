@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>李剑飞的博客</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/updata.css">
+    <!-- 代码高亮-->
+    <link rel="stylesheet" href="css/ltz_code.css">
+</head>
+
+<body>
+    <div class="clearfix layout-updata">
+        <!-- 看 -->
+        <div class="show float-right ">
+            <!-- head -->
+            <header>
+                <h1 id="title">标题</h1>
+                <h1 id="tag">标签用英文「 , 」分割</h1>
+
+            </header>
+            <!-- content -->
+            <div id="content">
+                内容
+            </div>
+        </div>
+        <!-- /看 -->
+        <!-- 写 -->
+        <div class="write float-right " id="write">
+            <!-- head -->
+            <header>
+                <!-- <input type="text" id="input_title"> -->
+                <textarea id="input_title" rows="1" placeholder="标题"></textarea>
+                <textarea id="input_tag" rows="1" placeholder="标签用英文「 , 」分割"></textarea>
+            </header>
+            <!-- content -->
+            <textarea id="input_content" placeholder="内容"></textarea>
+            <button type="button" id="button" onclick="saveAricle()">返回首页</button>
+        </div>
+        <!-- /写 -->
+    </div>
+    <!-- 提示框 -->
+    <div class="notification" id="notification">
+        每10秒，保存一次.
+    </div>
+    <!-- /提示框 -->
+    <script src="lib/av-min.js"></script>
+    <script src="lib/marked.js"></script>
+    <script src="lib/highlight.pack.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/updata.js"></script>
+    <script src="js/animation.js"></script>
+</body>
+
+</html>

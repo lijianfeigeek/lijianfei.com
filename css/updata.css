@@ -1,0 +1,135 @@
+.layout-updata {
+    min-width: 700px;
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+.show, .write {
+    width: 50%;
+    padding-left: 30px
+}
+
+h1 {
+    margin-bottom: 10px;
+}
+
+textarea:focus {
+    outline: none;
+}
+
+textarea {
+    width: 100%;
+    border-color: #f0f0f0;
+    resize: none;
+}
+
+header {
+    padding-top: 100px;
+    margin-bottom: 50px;
+}
+
+#title, #input_title {
+    font-size: 55px;
+    font-weight: 300;
+}
+
+#tag, #input_tag {
+    font-size: 25px;
+    font-weight: 200;
+}
+
+
+/*写样式*/
+
+.write>textarea {
+    font-weight: 200;
+    font-size: 18px;
+    line-height: 28px;
+}
+
+.writr {
+    margin-bottom: 100px;
+}
+
+
+/*展示样式 /适配markedowm字体样式*/
+
+.show #content {
+    font-weight: 200;
+    font-size: 18px;
+    line-height: 33px;
+}
+
+.show #content pre {
+    padding: 10px 20px;
+    background-color: #f8f8f8;
+    overflow-x: auto;
+    font-size: 15px;
+    line-height: 22px;
+}
+
+.show #content h1, .show #content h2, .show #content h3, .show #content h4, .show #content h5, .show #content h6 {
+    font-weight: 300;
+    margin-top: 50px;
+    margin-bottom: 0;
+}
+
+#content {
+    font-weight: 200;
+    font-size: 18px;
+    line-height: 33px;
+}
+
+#content h1, #content h2, #content h3, #content h4, #content h5, #content h6 {
+    font-weight: 300;
+    margin-top: 50px;
+    margin-bottom: 0;
+}
+
+#content th, #content td {
+    border: 1px solid #dfe2e5;
+    padding: 6px 4px;
+}
+
+#content table {
+    border-collapse: collapse;
+}
+
+#content img {
+    display: inline-block;
+    max-width: 100%;
+}
+
+#content blockquote {
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 0 16px;
+    color: #6a737d;
+    border-left: 4px solid #dfe2e5;
+}
+
+#content code {
+    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+    word-break: normal;
+    background-color: #f8f8f8;
+}
+
+
+/*提示框*/
+
+.notification {
+    position: fixed;
+    z-index: 1;
+    top: 30px;
+    right: 30px;
+    background-color: #f9f9f9;
+    width: 330px;
+    height: 100px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
+    line-height: 100px;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 500px;
+    opacity: 0;    
+    transition: all 0.6s cubic-bezier(0.215, 0.61, 0.355, 1) 0s;       
+}

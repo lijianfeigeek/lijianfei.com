@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="description" content="李剑飞的博客">
+    <meta name="keywords" content="李剑飞的博客">
+    <title>李剑飞的博客</title>
+</head>
+
+<body>
+    <!-- 大盒子 -->
+    <div class="layout">
+        <input id="password" type="password" />
+        <input id="login" type="submit" value="登陆" />
+        <!-- <input id="zhuce" type="submit" value="注册" /> -->
+
+    </div>
+    <!-- /大盒子 -->
+    <script src="lib/av-min.js"></script>
+    <script src="js/config.js"></script>
+    <script>
+        var password = document.getElementById('password');
+        document.getElementById('login').addEventListener('click', function() {
+            if (AV.User.current()) {
+                window.location.href = "index.html";
+                return;
+            }
+            //注册过就登陆
+            AV.User.logIn('admin', password.value).then(function(loginedUser) {
+                window.location.href = "index.html";
+            }, function(error) {
+                console.log(error);
+                alert('登陆失败');
+            });
+        }, false);
+        document.getElementById('zhuce').addEventListener('click', function() {
+            if (AV.User.current()) {
+                window.location.href = "index.html";
+                return;
+            }
+            var user = new AV.User();
+            // 设置用户名
+            user.setUsername('admin');
+            user.setPassword(password.value);
+            user.signUp().then(function(loginedUser) {
+                window.location.href = "index.html";
+            }, function(error) {
+                console.log(error);
+                alert('注册失败');
+            });
+        }, false);
+    </script>
+
+</body>
+
+</html>

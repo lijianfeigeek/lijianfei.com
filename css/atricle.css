@@ -1,0 +1,73 @@
+header {
+    padding-top: 100px;
+    margin-bottom: 50px;
+}
+
+#title {
+    font-size: 50px;
+    font-weight: 300;
+}
+
+#tag {
+    font-size: 25px;
+    font-weight: 200;
+    margin-top: 15px;
+    margin-bottom: 50px;
+}
+
+#time {
+    font-weight: 100;
+    font-size: 15px;
+    text-align: right;
+    padding-right: 15px;
+}
+/*适配markedowm字体样式*/
+
+#content {
+    font-weight: 200;
+    font-size: 18px;
+    line-height: 33px;
+    animation: op 2s;      
+}
+
+#content pre {
+    padding: 10px 20px;
+    background-color: #f8f8f8;
+    overflow-x: auto;
+    font-size: 15px;
+    line-height: 22px;
+}
+
+#content h1, #content h2, #content h3, #content h4, #content h5, #content h6 {
+    font-weight: 200;
+    margin-top: 50px;
+    margin-bottom: 0;
+}
+
+#content th, #content td {
+    border: 1px solid #dfe2e5;
+    padding: 6px 4px;
+}
+
+#content table {
+    border-collapse: collapse;
+}
+
+#content img {
+    display: inline-block;
+    max-width: 100%;
+}
+
+#content blockquote {
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 0 16px;
+    color: #6a737d;
+    border-left: 4px solid #dfe2e5;
+}
+
+#content code {
+    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+    word-break: normal;
+    background-color: #f8f8f8;
+}
