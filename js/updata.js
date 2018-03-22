@@ -14,7 +14,7 @@ marked.setOptions({
 })
 
 const input_title = document.getElementById('input_title')
-const input_tag = document.getElementById('input_tag')
+// const input_tag = document.getElementById('input_tag')
 const input_content = document.getElementById('input_content')
 
 //如果有id，发送请求获取id
@@ -25,12 +25,12 @@ if (id) {
     query.get(id).then(function(atricle) {
         atricleObject = atricle
         input_title.value = atricle.get('title')
-        input_tag.value = atricle.get('tag')
+        // input_tag.value = atricle.get('tag')
         input_content.value = atricle.get('content')
 
         //调用更新界面
         updataTitle.apply(input_title)
-        updataTag.apply(input_tag)
+        // updataTag.apply(input_tag)
         updataContent.apply(input_content)
 
     }, function(error) {
@@ -61,25 +61,25 @@ function updataTitle() {
 }
 
 //标签
-input_tag.oninput = updataTag
+// input_tag.oninput = updataTag
 
-function updataTag() {
-    const tagDOM = document.getElementById('tag')
-    tagDOM.innerText = this.value || '标签用英文「 , 」分割'
+// function updataTag() {
+//     const tagDOM = document.getElementById('tag')
+//     tagDOM.innerText = this.value || '标签用英文「 , 」分割'
 
-    // 获取这次输入是否是换行
-    let isbr = 0
-    if (this.value.substr(this.value.length - 1, this.value.length) == '\n') {
-        isbr = 30
-    }
+//     // 获取这次输入是否是换行
+//     let isbr = 0
+//     if (this.value.substr(this.value.length - 1, this.value.length) == '\n') {
+//         isbr = 30
+//     }
 
-    //计算标题高度
-    if (tagDOM.clientHeight <= 30) {
-        this.style.height = 30 + isbr + 'px'
-        return
-    }
-    this.style.height = tagDOM.clientHeight + isbr + 'px'
-}
+//     //计算标题高度
+//     if (tagDOM.clientHeight <= 30) {
+//         this.style.height = 30 + isbr + 'px'
+//         return
+//     }
+//     this.style.height = tagDOM.clientHeight + isbr + 'px'
+// }
 
 //文章内容
 
@@ -109,8 +109,8 @@ let contentCount = 0
 function updataAricle() {
 
     if (input_title.value.length == titleCount &&
-        input_content.value.length == contentCount &&
-        input_tag.value.length == tagCount)
+        input_content.value.length == contentCount) //&&
+        // input_tag.value.length == tagCount)
         return
 
     document.getElementById('notification').style.opacity = '1'
@@ -128,12 +128,12 @@ function updataAricle() {
     }
 
     atricleObject.set('title', input_title.value)
-    atricleObject.set('tag', input_tag.value)
+    // atricleObject.set('tag', input_tag.value)
     atricleObject.set('content', input_content.value)
 
     atricleObject.save().then(function(atricle) {
         titleCount = input_title.value.length
-        tagCount = input_tag.value.length
+        // tagCount = input_tag.value.length
         contentCount = input_content.value.length
 
     }, function(error) {
