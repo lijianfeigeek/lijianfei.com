@@ -50,7 +50,21 @@
     <script src="js/config.js"></script>
     <script src="js/atricle.js"></script>
     <script src="js/animation.js"></script>
-    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1271217245'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s22.cnzz.com/z_stat.php%3Fid%3D1271217245%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+    <!--PC版-->
+    <div id="SOHUCS" sid=""></div>
+    <script> 
+      const SOHUCS = document.getElementById('SOHUCS')
+      SOHUCS.sid = window.location.search.split('?')[1].split('=')[0]
+      console.log(SOHUCS.sid)
+    </script>
+    <script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js" ></script>
+    <script type="text/javascript">
+    window.changyan.api.config({
+    appid: 'cytuVib6M',
+    conf: 'prod_d9c7a4e46611c11ab2b1035be03fc4f9'
+    });
+    </script>
+    <!-- <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1271217245'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s22.cnzz.com/z_stat.php%3Fid%3D1271217245%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script> -->
 </body>
 
 </html>
