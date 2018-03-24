@@ -36,7 +36,7 @@ function atricleHTML(id, title, content, time) {
 }
 
 //发布文章
-document.getElementById('title').addEventListener('click', function() {
+document.getElementById('admin').addEventListener('click', function() {
     if (AV.User.current()) {
         window.location.href = "updata.html"
     }else{
