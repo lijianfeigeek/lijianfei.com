@@ -10,7 +10,7 @@ header {
 
 #title {
     font-weight: 300;
-    font-size: 40px;
+    font-size: 30px;
 }
 
 #outer {
@@ -35,7 +35,7 @@ header {
 
 .content .item .title {
     font-weight: 200;
-    font-size: 30px;
+    font-size: 25px;
     margin-bottom: 15px;
 }
 
