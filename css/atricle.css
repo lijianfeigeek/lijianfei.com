@@ -3,8 +3,16 @@ header {
     margin-bottom: 50px;
 }
 
+#outer {
+  width: 100%;
+  text-align: center;
+}
+#inner {
+  display: inline-block;
+}
+
 #title {
-    font-size: 50px;
+    font-size: 40px;
     font-weight: 300;
 }
 

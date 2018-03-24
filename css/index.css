@@ -10,7 +10,15 @@ header {
 
 #title {
     font-weight: 300;
-    font-size: 60px;
+    font-size: 40px;
+}
+
+#outer {
+  width: 100%;
+  text-align: center;
+}
+#inner {
+  display: inline-block;
 }
 
 .content .item {
