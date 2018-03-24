@@ -13,10 +13,13 @@
 <body>
     <!-- 大盒子 -->
     <div class="layout">
-        <input id="password" type="password" />
-        <input id="login" type="submit" value="登陆" />
-        <!-- <input id="zhuce" type="submit" value="注册" /> -->
-
+        <div id="outer">  
+            <div id="inner">
+                <input id="password" type="password" />
+                <input id="login" type="submit" value="登陆" />
+                <!-- <input id="zhuce" type="submit" value="注册" /> -->
+            </div>
+        </div>
     </div>
     <!-- /大盒子 -->
     <script src="lib/av-min.js"></script>
@@ -53,6 +56,15 @@
             });
         }, false);
     </script>
+    <style>
+      #outer {
+      width: 100%;
+      text-align: center;
+      }
+      #inner {
+        display: inline-block;
+      }
+    </style>
 
 </body>
 
