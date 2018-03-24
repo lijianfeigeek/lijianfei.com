@@ -39,22 +39,22 @@
                 alert('登陆失败');
             });
         }, false);
-        document.getElementById('zhuce').addEventListener('click', function() {
-            if (AV.User.current()) {
-                window.location.href = "index.html";
-                return;
-            }
-            var user = new AV.User();
-            // 设置用户名
-            user.setUsername('admin');
-            user.setPassword(password.value);
-            user.signUp().then(function(loginedUser) {
-                window.location.href = "index.html";
-            }, function(error) {
-                console.log(error);
-                alert('注册失败');
-            });
-        }, false);
+        // document.getElementById('zhuce').addEventListener('click', function() {
+        //     if (AV.User.current()) {
+        //         window.location.href = "index.html";
+        //         return;
+        //     }
+        //     var user = new AV.User();
+        //     // 设置用户名
+        //     user.setUsername('admin');
+        //     user.setPassword(password.value);
+        //     user.signUp().then(function(loginedUser) {
+        //         window.location.href = "index.html";
+        //     }, function(error) {
+        //         console.log(error);
+        //         alert('注册失败');
+        //     });
+        // }, false);
     </script>
     <style>
       #outer {

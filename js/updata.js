@@ -142,13 +142,15 @@ function updataAricle() {
 
     setTimeout(function() {
         document.getElementById('notification').style.opacity = '0'
-    }, 3000)
+    }, 1000)
+
+    setTimeout(function() {
+      window.location.href="index.html";  
+    }, 2000)
 }
 //10秒保存一次
-setInterval(updataAricle, 10000)
+// setInterval(updataAricle, 10000)
 
-function saveAricle()
-{
-    // updataAricle;
-    window.location.href='index.html';
-}
+document.getElementById('save').addEventListener('click', function() {
+  updataAricle()
+}, false)
