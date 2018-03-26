@@ -24,25 +24,26 @@ query.get(id).then(function(result) {
     const content = marked(result.get('content'))
     const time = result.createdAt.toLocaleString()
     const tag = result.get('tag')
-    const newTime = result.updatedAt.toLocaleString()
+    // const newTime = result.updatedAt.toLocaleString()
 
-    atricleContentHTML(title, content, time, newTime,tag)
+    atricleContentHTML(title, content, time,tag)
 }, function(error) {
     console.error(error)
 })
 
-function atricleContentHTML(title, content, time, newTime,tag) {
+function atricleContentHTML(title, content, time,tag) {
     document.title = title
     document.getElementById('title').innerText = title
     document.getElementById('content').innerHTML = content
-    if(time == newTime)
-    {
-        document.getElementById('time').innerText = '创建于 ' + time
-    }
-    else
-    {
-        document.getElementById('time').innerText = '更新于 ' + newTime + '\n' +'创建于 ' + time
-    }
+    document.getElementById('time').innerText = '李剑飞 创建于 ' + time
+    // if(time == newTime)
+    // {
+    //     document.getElementById('time').innerText = '创建于 ' + time
+    // }
+    // else
+    // {
+    //     document.getElementById('time').innerText = '更新于 ' + newTime + '\n' +'创建于 ' + time
+    // }
 
     let tagHTML = '标签：'
     var tagArr = tag.split(',')
