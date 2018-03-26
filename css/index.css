@@ -13,6 +13,11 @@ header {
     font-size: 30px;
 }
 
+#count {
+  margin-left: 5px;
+  font-size: 15px;
+}
+
 #outer {
   width: 100%;
   text-align: center;

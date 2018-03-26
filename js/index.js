@@ -9,11 +9,11 @@ if (decodeURI(tag) == '首页') {
     const query = new AV.Query('Atricle')
     query.limit(1000)
     query.descending('createdAt')
-    query.notEqualTo('hidden', 1) //hidden 不为 1 ，也就是不隐藏的。
-    query.contains('tag', decodeURI(tag)) //注意转码
+    // query.notEqualTo('hidden', 1) //hidden 不为 1 ，也就是不隐藏的。
+    // query.contains('tag', decodeURI(tag)) //注意转码
     query.find().then(function(results) {
         let html = ''
-        for (let i = 0; i < results.length; i++) {
+        for (let i = 0; i <results.length; i++) {
             const id = results[i].id
             let title = results[i].get('title')
             title = title.length < 70 ? title : title.substring(0, 70) + '......' 
@@ -22,6 +22,7 @@ if (decodeURI(tag) == '首页') {
             const time = results[i].createdAt.toLocaleString()
             html += atricleHTML(id, title, content, time)
         }
+        document.getElementById('count').innerHTML = '嗯..！目前共计'+results.length+'篇日志。继续努力。'
         document.getElementById('content').innerHTML = html
     }, function(error) {
         console.error(error)
