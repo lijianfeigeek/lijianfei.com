@@ -46,21 +46,21 @@ document.getElementById('admin').addEventListener('click', function() {
 }, false)
 
 
-let tagHTML = '标签：'
-const tagArr = tagStr.split(',')
-for (let i = 0; i < tagArr.length; i++) {
-    tagHTML += ' <a href="index.html?' + tagArr[i] + '">' + tagArr[i] + '</a>'
-}
-document.getElementById('tag').innerHTML = tagHTML
+// let tagHTML = '标签：'
+// const tagArr = tagStr.split(',')
+// for (let i = 0; i < tagArr.length; i++) {
+//     tagHTML += ' <a href="index.html?' + tagArr[i] + '">' + tagArr[i] + '</a>'
+// }
+// document.getElementById('tag').innerHTML = tagHTML
 
 //标签按钮
-document.getElementById('btn').onclick = function() {
-    const tag = document.getElementById('tag')
-    if (this.innerText == "标签") {
-        this.innerText = "取消"
-        tag.style.visibility = 'visible'
-    } else {
-        this.innerText = "标签"
-        tag.style.visibility = 'hidden'
-    }
-}
+// document.getElementById('btn').onclick = function() {
+//     const tag = document.getElementById('tag')
+//     if (this.innerText == "标签") {
+//         this.innerText = "取消"
+//         tag.style.visibility = 'visible'
+//     } else {
+//         this.innerText = "标签"
+//         tag.style.visibility = 'hidden'
+//     }
+// }
