@@ -145,7 +145,8 @@ function updataAricle() {
     }, 1000)
 
     setTimeout(function() {
-      window.location.href="index.html";  
+      AV.User.logOut()
+      window.location.href="index.html"
     }, 2000)
 }
 //10秒保存一次
