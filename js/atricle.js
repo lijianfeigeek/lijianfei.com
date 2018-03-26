@@ -27,6 +27,7 @@ query.get(id).then(function(result) {
     // const newTime = result.updatedAt.toLocaleString()
 
     atricleContentHTML(title, content, time,tag)
+    readTime('readTime', content)
 }, function(error) {
     console.error(error)
 })
@@ -45,12 +46,12 @@ function atricleContentHTML(title, content, time,tag) {
     //     document.getElementById('time').innerText = '更新于 ' + newTime + '\n' +'创建于 ' + time
     // }
 
-    let tagHTML = '标签：'
-    var tagArr = tag.split(',')
-    for (let i = 0; i < tagArr.length; i++) {
-        tagHTML += ' <a href="index.html?' + tagArr[i] + '">' + tagArr[i] + '</a>'
-    }
-    document.getElementById('tag').innerHTML = tagHTML
+    // let tagHTML = '标签：'
+    // var tagArr = tag.split(',')
+    // for (let i = 0; i < tagArr.length; i++) {
+    //     tagHTML += ' <a href="index.html?' + tagArr[i] + '">' + tagArr[i] + '</a>'
+    // }
+    // document.getElementById('tag').innerHTML = tagHTML
 }
 
 //跳转网页
@@ -59,3 +60,13 @@ document.getElementById('title').addEventListener("click", function() {
         window.location.href = 'updata.html?' + id
     }
 }, false)
+
+function readTime(b, wordcount) {
+  var read_time= wordcount.length / 400; //计算阅读时间
+  var read_time= Math.round(read_time); //四舍五入
+  if(read_time > 1){
+      document.getElementById(b).innerHTML = '预计阅读时间：'+read_time + '分钟'
+  } else{
+      document.getElementById(b).innerHTML = '预计阅读时间：1分钟'
+  }
+}
