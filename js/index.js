@@ -65,3 +65,55 @@ document.getElementById('admin').addEventListener('click', function() {
 //         tag.style.visibility = 'hidden'
 //     }
 // }
+
+var intStartTime;
+var objIMG = new Image();
+var bolIsRunning = false;
+var intTimerID;
+var intTimeout;
+
+objIMG.onload = objIMG.onerror = function() {
+    /* 
+* 有回应,取消超时计时 
+*/
+    clearTimeout(intTimerID);
+    if (!bolIsRunning || bolIsTimeout) return;
+    var delay = new Date() - intStartTime;
+    document.getElementById('ping').innerHTML = "ping" +((delay < 1) ? ("<1") : (":" + delay)) + "ms"
+    // console.log(delay)
+    // println("Reply from " + strURL + " time" + ((delay < 1) ? ("<1") : ("=" + delay)) + "ms");
+    // arrDelays.push(delay);
+    /* 
+* 每次请求间隔限制在1秒以上 
+*/
+    setTimeout(ping, delay < 1000 ? (1000 - delay) : 1000);
+}
+function ping() {
+    /* 
+* 发送请求 
+*/
+    intStartTime = +new Date();
+    intSent++;
+    objIMG.src = strURL //+ "/" + intStartTime;
+    bolIsTimeout = false;
+    /* 
+* 超时计时 
+*/
+    intTimerID = setTimeout(timeout, intTimeout);
+}
+function timeout() {
+    if (!bolIsRunning) return;
+    bolIsTimeout = true;
+    objIMG.src = "X:\\";
+    // println("Request timed out.");
+    ping();
+}
+
+var strURL = "lijianfei.com";
+if (strURL.substring(0, 7).toLowerCase() != "http://") strURL = "http://" + strURL;
+intTimeout = parseInt(2000, 10);
+if (isNaN(intTimeout)) intTimeout = 2000;
+if (intTimeout < 1000) intTimeout = 1000;
+bolIsRunning = true;
+intSent = 0;
+ping();
