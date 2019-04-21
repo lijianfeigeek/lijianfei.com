@@ -29,8 +29,6 @@ const url = location.search
 const id = url.split('?')[1].split('=')[0]
 
 const query = new AV.Query('Atricle')
-query.descending('createdAt')
-query.limit(1000)
 query.get(id).then(function(result) {
     const title = result.get('title')
     const content = marked(result.get('content'))
@@ -45,7 +43,7 @@ function atricleContentHTML(title, content, time,tag) {
     document.title = '李剑飞的博客 | ' + title
     document.getElementById('title').innerText = title
     document.getElementById('content').innerHTML = content
-    document.getElementById('time').innerText = '李剑飞 创建于 ' + time
+    document.getElementById('time').innerText = '李剑飞 创建于 ' + time + '   '
 }
 
 //跳转网页

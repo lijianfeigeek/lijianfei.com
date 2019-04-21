@@ -26,7 +26,7 @@ header {
 #time {
     font-weight: 100;
     font-size: 15px;
-    text-align: center;
+    text-align: left;
     /* padding-left: 15px; */
 }
 /*适配markedowm字体样式*/
