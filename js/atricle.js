@@ -33,18 +33,47 @@ query.get(id).then(function(result) {
     const title = result.get('title')
     const content = marked(result.get('content'))
     const time = result.createdAt.toLocaleString()
-    const tag = result.get('tag')
-    atricleContentHTML(title, content, time,tag)
+    atricleContentHTML(title, content, time)
 }, function(error) {
     console.error(error)
 })
 
-function atricleContentHTML(title, content, time,tag) {
+function atricleContentHTML(title, content, time) {
     document.title = '李剑飞的博客 | ' + title
     document.getElementById('title').innerText = title
     document.getElementById('content').innerHTML = content
-    document.getElementById('time').innerText = '李剑飞 创建于 ' + time + '   '
+    document.getElementById('time').innerText = ' 李剑飞 创建于 ' + time + '   '
 }
+
+// 根据id获取
+const query_pv = new AV.Query('Atricle_pv')
+query_pv.equalTo('atricle_objid',id)
+query_pv.find().then(function (result) {
+    if(result.length >0){// 如果有直接读数
+        let pv = result[0].get('pv')
+        let objectid = result[0].get('objectId')
+        atriclePV(pv)
+        // 获得该对象
+        let atricleObject = AV.Object.createWithoutData('Atricle_pv', objectid);
+        atricleObject.increment('pv', 1);
+        atricleObject.save()
+    }
+    else{// 如果没有创建一个，再读数
+        var Atricle_pv = AV.Object.extend('Atricle_pv')
+        var atricleObject = new Atricle_pv()
+        atricleObject.set('atricle_objid',id);
+        atricleObject.increment('pv', 1);
+        atricleObject.save()
+        atriclePV(0)
+    }
+}, function (error) {
+    console.error(error)
+});
+
+function atriclePV(pv){
+    document.getElementById('pv').innerText = pv    
+}
+
 
 //跳转网页
 document.getElementById('title').addEventListener("click", function() {
