@@ -19,6 +19,7 @@ const id = url.split('?')[1].split('=')[0]
 
 const query = new AV.Query('Atricle')
 query.descending('createdAt')
+query.limit(1000)
 query.get(id).then(function(result) {
     const title = result.get('title')
     const content = marked(result.get('content'))
@@ -33,7 +34,7 @@ query.get(id).then(function(result) {
 })
 
 function atricleContentHTML(title, content, time,tag) {
-    document.title = title
+    document.title = '李剑飞的博客 | ' + title
     document.getElementById('title').innerText = title
     document.getElementById('content').innerHTML = content
     document.getElementById('time').innerText = '李剑飞 创建于 ' + time
@@ -123,3 +124,15 @@ if (intTimeout < 1000) intTimeout = 1000;
 bolIsRunning = true;
 intSent = 0;
 ping();
+
+var gitalk = new Gitalk({
+    clientID: 'f4c9de56e72723b940b7',
+    clientSecret: '20d2721ab67bc17d6a3cefc489d4ee669598d9a2',
+    repo: 'lijianfeigeek.github.io',
+    owner: 'lijianfeigeek',
+    admin: ['lijianfeigeek'],
+    id: location.pathname,      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+  
+gitalk.render('gitalk-container')

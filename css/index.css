@@ -51,10 +51,9 @@ header {
 }
 
 .content .item .time {
-    margin-right: 30px;
     font-weight: 100;
     font-size: 15px;
-    text-align: right;
+    text-align: left;
 }
 /*按钮 position*/
 .layoutfixed {

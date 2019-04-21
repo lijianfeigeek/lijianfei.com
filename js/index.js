@@ -32,7 +32,7 @@ if (decodeURI(tag) == '首页') {
 function atricleHTML(id, title, content, time) {
     return '<a class="item" href="atricle.html?' + id + '">' +
         '<h1 class="title">' + title + '</h1>' +
-        '<div class="atricle-content">' + content + '</div>' +
+        // '<div class="atricle-content">' + content + '</div>' +
         '<div class="time">' + time + '</div></a>'
 }
 

@@ -12,25 +12,20 @@
     <link rel="stylesheet" href="css/atricle.css">
     <!-- 代码高亮-->
     <link rel="stylesheet" href="css/ltz_code.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
 </head>
 
 <body>
-    <div id="dg" style="z-index: 9999; position: fixed ! important; left: 0px; bottom: 0px;">  
-      <table width=""100% style="position: absolute; width:260px; left: 0px; bottom: 0px;">  
-        <div id="ping" style="font-size: 10px;" ></div>
-      </table>  
-    </div>  
-  <canvas style="position: absolute;width: 100%;"></canvas>
-    <!-- 大盒子 -->
+
     <div class="layout">
         <header>
-            <h1 id="title"></h1>
-            <!-- <h1 id="tag"></h1> -->
+            <header>
+                <h2 id="title"></h2>
+            </header> 
+            
         </header>
-       <div id="readTime"></div>
        <br>
-        <!-- /head -->
-        <!-- content -->
         <div id="content">
             <!-- loading -->
             <div class="loading">
@@ -48,14 +43,13 @@
         <br>
         <div id="outer">  
           <div id="inner">
-            <img style="width:350px; height:350px" src="img/wechatpay.jpg"  alt="赞赏" />
             <br>
             <br>
             <div>本博客所有文章均采用<a href="https://creativecommons.org/licenses/by-nc-sa/3.0/">CC BY-NC-SA 3.0</a>许可协议。</div>
           </div>
         </div>
-        <!-- /content -->
-        <!-- footer -->
+        <div id="gitalk-container"></div>
+
         <footer>
             <div id="outer">  
                 <div id="inner">
@@ -63,7 +57,6 @@
                 </div>
             </div>
         </footer>
-        <!-- /footer -->
     </div>
     <script src="lib/av-min.js"></script>
     <script src="lib/AV.analytics.js"></script>
@@ -71,7 +64,8 @@
     <script src="lib/highlight.pack.js"></script>
     <script src="js/config.js"></script>
     <script src="js/atricle.js"></script>
-    <script src="js/animation.js"></script>
+    <script src="js/canvas-nest.js"></script>
+
 </body>
 
 </html>
