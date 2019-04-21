@@ -7,24 +7,60 @@ if (decodeURI(tag) == '首页') {
 // 开始查询
 (function () {
     const query = new AV.Query('Atricle')
-    query.limit(1000)
-    query.descending('createdAt')
-    query.find().then(function(results) {
-        let html = ''
-        for (let i = 0; i <results.length; i++) {
-            const id = results[i].id
-            let title = results[i].get('title')
-            title = title.length < 70 ? title : title.substring(0, 70) + '......' 
-            let content = results[i].get('content')
-            content = content.length < 100 ? content : content.substring(0, 100) + '......' 
-            const time = results[i].createdAt.toLocaleString()
-            html += atricleHTML(id, title, content, time)
+    // 先查询数量
+    query.count().then(function (count) {
+        // 1000以内
+        if(count<=1000){
+            query.limit(count)
+            query.descending('createdAt')
+            query.find().then(function(results) {
+                let html = ''
+                for (let i = 0; i <results.length; i++) {
+                    const id = results[i].id
+                    let title = results[i].get('title')
+                    title = title.length < 70 ? title : title.substring(0, 70) + '......' 
+                    let content = results[i].get('content')
+                    content = content.length < 100 ? content : content.substring(0, 100) + '......' 
+                    const time = results[i].createdAt.toLocaleString()
+                    html += atricleHTML(id, title, content, time)
+                }
+                document.getElementById('count').innerHTML = '嗯..！目前共计'+results.length+'篇日志。继续努力。'
+                document.getElementById('content').innerHTML = html
+            }, function(error) {
+                console.error(error)
+            })
         }
-        document.getElementById('count').innerHTML = '嗯..！目前共计'+results.length+'篇日志。继续努力。'
-        document.getElementById('content').innerHTML = html
-    }, function(error) {
+        else if(count>1000){
+            // 1000以外 
+            // 几个1000
+            let num_thousand = count % 1000
+            let results = []
+            for(let i = 0;i<=num_thousand;i++)
+            {
+                let i_thousand = i*1000
+                query.limit(count)
+                query.descending('createdAt')
+                query.find().then(function(i_results) {
+                    results = results.concat(i_results)
+                }, function(error) {
+                    console.error(error)
+                })
+            }
+            for (let i = 0; i <results.length; i++) {
+                const id = results[i].id
+                let title = results[i].get('title')
+                title = title.length < 70 ? title : title.substring(0, 70) + '......' 
+                let content = results[i].get('content')
+                content = content.length < 100 ? content : content.substring(0, 100) + '......' 
+                const time = results[i].createdAt.toLocaleString()
+                html += atricleHTML(id, title, content, time)
+            }
+            document.getElementById('count').innerHTML = '嗯..！目前共计'+results.length+'篇日志。继续努力。'
+            document.getElementById('content').innerHTML = html
+        }
+    }, function (error) {
         console.error(error)
-    })
+    });
 })()
 
 function atricleHTML(id, title, content, time) {
