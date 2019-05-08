@@ -12,21 +12,23 @@ marked.setOptions({
     }
 })
 
+
+
+//获取url，剪切出id
+const url = location.search
+const id = url.split('?')[1].split('=')[0]
+
 var gitalk = new Gitalk({
     clientID: 'f4c9de56e72723b940b7',
     clientSecret: '20d2721ab67bc17d6a3cefc489d4ee669598d9a2',
     repo: 'lijianfeigeek.github.io',
     owner: 'lijianfeigeek',
     admin: ['lijianfeigeek'],
-    id: location.pathname,      // Ensure uniqueness and length less than 50
+    id: url,      // Ensure uniqueness and length less than 50
     distractionFreeMode: false  // Facebook-like distraction free mode
   })
   
 gitalk.render('gitalk-container')
-
-//获取url，剪切出id
-const url = location.search
-const id = url.split('?')[1].split('=')[0]
 
 const query = new AV.Query('Atricle')
 query.get(id).then(function(result) {
