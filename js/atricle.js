@@ -18,24 +18,41 @@ marked.setOptions({
 const url = location.search
 const id = url.split('?')[1].split('=')[0]
 
-var gitalk = new Gitalk({
-    clientID: 'f4c9de56e72723b940b7',
-    clientSecret: '20d2721ab67bc17d6a3cefc489d4ee669598d9a2',
-    repo: 'lijianfeigeek.github.io',
-    owner: 'lijianfeigeek',
-    admin: ['lijianfeigeek'],
-    id: url,      // Ensure uniqueness and length less than 50
-    distractionFreeMode: false  // Facebook-like distraction free mode
-  })
-  
-gitalk.render('gitalk-container')
-
 const query = new AV.Query('Atricle')
 query.get(id).then(function(result) {
     const title = result.get('title')
     const content = marked(result.get('content'))
     const time = result.createdAt.toLocaleString()
     atricleContentHTML(title, content, time)
+
+    var gitalk = new Gitalk({
+        clientID: 'f4c9de56e72723b940b7', // 必须. GitHub Application Client ID.
+        clientSecret: '20d2721ab67bc17d6a3cefc489d4ee669598d9a2', // 必须. GitHub Application Client Secret.
+        repo: 'lijianfeigeek.github.io', // 必须. GitHub repository.
+        owner: 'lijianfeigeek', // 必须. GitHub repository 所有者，可以是个人或者组织。
+        admin: ['lijianfeigeek'], // 必须. GitHub repository 的所有者和合作者 (对这个 repository 有写权限的用户)。
+        id: id, // 页面的唯一标识。长度必须小于50。
+        number:id, // 页面的 issue ID 标识，若未定义number属性则会使用id进行定位。
+        labels:['Gitalk'], // GitHub issue 的标签。
+        title :title, // GitHub issue 的标题。
+        body:location.href + header.meta[description], // GitHub issue 的内容。
+        language :navigator.language || navigator.userLanguage, // 设置语言，支持 [en, zh-CN, zh-TW]。
+        perPage :100,// 每次加载的数据大小，最多 100。
+        distractionFreeMode: true , // 类似Facebook评论框的全屏遮罩效果.
+        pagerDirection :'last',// 评论排序方式， last为按评论创建时间倒叙，first为按创建时间正序。
+        createIssueManually : false, // 如果当前页面没有相应的 isssue 且登录的用户属于 admin，则会自动创建 issue。如果设置为 true，则显示一个初始化页面，创建 issue 需要点击 init 按钮。
+        proxy :'https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token',// GitHub oauth 请求到反向代理，为了支持 CORS。
+        flipMoveOptions :{
+            staggerDelayBy: 150,
+            appearAnimation: 'accordionVertical',
+            enterAnimation: 'accordionVertical',
+            leaveAnimation: 'accordionVertical'
+        },// 评论列表的动画。
+        enableHotKey :true // 启用快捷键(cmd|ctrl + enter) 提交评论.
+      })
+      
+    gitalk.render('gitalk-container')
+
 }, function(error) {
     console.error(error)
 })
