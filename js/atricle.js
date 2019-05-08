@@ -45,52 +45,6 @@ function atricleContentHTML(title, content, time) {
     document.getElementById('time').innerText = ' 李剑飞 创建于 ' + time + '   '
 }
 
-// $.getJSON('http://www.geoplugin.net/json.gp?jsoncallback=?', function(data) {
-//     // ip
-//     const ip = data.geoplugin_request
-//     // 国家
-//     const country = data.geoplugin_countryName
-//     // 省份
-//     const region = data.geoplugin_region
-//     // 城市
-//     const city = data.geoplugin_city
-
-//     let readerInfo = null
-
-//     if(ip!=null & country!=null & region!=null & city != null){
-//         readerInfo = {
-//             ip,
-//             country,
-//             region,
-//             city
-//         }
-//     }
-
-//     if (readerInfo){
-//         console.log(readerInfo)
-//         // 根据id获取
-//         const query_pv = new AV.Query('Atricle_pv')
-//         query_pv.equalTo('atricle_objid',id)
-//         query_pv.find().then(function (result) {
-//             if(result.length >0){// 如果有直接写入
-//                 let objectid = result[0].get('objectId')
-//                 let atricleObject = AV.Object.createWithoutData('Atricle_pv', objectid);
-//                 atricleObject.add('readerInfo', readerInfo);
-//                 atricleObject.save()
-//             }
-//             else{// 如果没有创建一个
-//                 var Atricle_pv = AV.Object.extend('Atricle_pv')
-//                 var atricleObject = new Atricle_pv()
-//                 atricleObject.set('atricle_objid',id);
-//                 tricleObject.add('readerInfo', readerInfo);
-//                 atricleObject.save()
-//             }
-//         }, function (error) {
-//             console.error(error)
-//         });
-//     }
-// })
-
 // 根据id获取
 const query_pv = new AV.Query('Atricle_pv')
 query_pv.equalTo('atricle_objid',id)
@@ -127,3 +81,31 @@ document.getElementById('title').addEventListener("click", function() {
         window.location.href = 'updata.html?' + id
     }
 }, false)
+
+//引一下sohu这个 
+//返回数据var returnCitySN = {"cip": "117.132.58.6", "cid": "370200", "cname": "山东省青岛市"};
+{/* <script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>    */}
+//就能在用到的地方直接取到变量 returnCitySN啦
+
+if (returnCitySN != null){
+    // 根据id获取
+    const query_pv = new AV.Query('Atricle_pv')
+    query_pv.equalTo('atricle_objid',id)
+    query_pv.find().then(function (result) {
+        if(result.length >0){// 如果有直接写入
+            let objectid = result[0].get('objectId')
+            let atricleObject = AV.Object.createWithoutData('Atricle_pv', objectid);
+            atricleObject.add('readerInfo', returnCitySN);
+            atricleObject.save()
+        }
+        else{// 如果没有创建一个
+            var Atricle_pv = AV.Object.extend('Atricle_pv')
+            var atricleObject = new Atricle_pv()
+            atricleObject.set('atricle_objid',id);
+            tricleObject.add('readerInfo', returnCitySN);
+            atricleObject.save()
+        }
+    }, function (error) {
+        console.error(error)
+    });
+}
