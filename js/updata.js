@@ -1,17 +1,24 @@
+const uml = {
+    openMarker: '@startuml',
+    closeMarker: '@enduml',
+    diagramName: 'uml',
+    imageFormat: 'png'
+}
 
-marked.setOptions({
-    renderer: new marked.Renderer(),
-    gfm: true, //开启github的markdown
-    tables: true, //支持Github表格，必须打开gfm选项
-    breaks: true, //支持Github换行符，必须打开gfm选项
-    pedantic: false, //只解析符合markdown.pl定义的，不修正markdown的错误
-    sanitize: false, //原始输出，忽略HTML标签
-    smartLists: true,
-    smartypants: false,
-    highlight: function (code) { //插件代码高亮
-        return hljs.highlightAuto(code).value
-    }
-})
+const mindmap = {
+    openMarker: '@startmindmap',
+    closeMarker: '@endmindmap',
+    diagramName: 'mindmap',
+    imageFormat: 'png'
+}
+
+// 加载markdownit及其插件
+var md = window.markdownit()
+.use(window.markdownitEmoji)
+.use(window.markdownitPlantuml,uml)
+.use(window.markdownitPlantuml,mindmap);
+
+
 
 const input_title = document.getElementById('input_title')
 // const input_tag = document.getElementById('input_tag')
@@ -91,8 +98,7 @@ setInterval(function() {
     
     if (input_contentText != text){
         input_contentText = text
-
-        contentDOM.innerHTML = marked(input_content.value || '内容')    
+        contentDOM.innerHTML = md.render(input_content.value || '内容')
         //计算内容高度
         input_content.style.height = contentDOM.clientHeight + 100 + 'px'
     }

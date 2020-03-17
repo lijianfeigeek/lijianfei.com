@@ -1,18 +1,22 @@
-marked.setOptions({
-    renderer: new marked.Renderer(),
-    gfm: true, //开启github的markdown
-    tables: true, //支持Github表格，必须打开gfm选项
-    breaks: true, //支持Github换行符，必须打开gfm选项
-    pedantic: false, //只解析符合markdown.pl定义的，不修正markdown的错误
-    sanitize: false, //忽略HTML标签
-    smartLists: true,//使用新语法
-    smartypants: false,//使用新语法，比如在引用语法中加入破折号。
-    highlight: function (code) { //插件代码高亮
-        return hljs.highlightAuto(code).value
-    }
-})
+const uml = {
+    openMarker: '@startuml',
+    closeMarker: '@enduml',
+    diagramName: 'uml',
+    imageFormat: 'png'
+}
 
+const mindmap = {
+    openMarker: '@startmindmap',
+    closeMarker: '@endmindmap',
+    diagramName: 'mindmap',
+    imageFormat: 'png'
+}
 
+// 加载markdownit及其插件
+var md = window.markdownit()
+.use(window.markdownitEmoji)
+.use(window.markdownitPlantuml,uml)
+.use(window.markdownitPlantuml,mindmap);
 
 //获取url，剪切出id
 const url = location.search
@@ -40,7 +44,7 @@ gitalk.render('gitalk-container')
 const query = new AV.Query('Atricle')
 query.get(id).then(function(result) {
     const title = result.get('title')
-    const content = marked(result.get('content'))
+    const content = md.render(result.get('content'))
     const time = result.createdAt.toLocaleString()
     atricleContentHTML(title, content, time)
 }, function(error) {
