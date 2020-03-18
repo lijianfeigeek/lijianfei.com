@@ -13,7 +13,11 @@ const mindmap = {
 }
 
 // 加载markdownit及其插件
-var md = window.markdownit()
+var md = window.markdownit({
+    html: true,
+    linkify: true,
+    typographer: true,
+  })
 .use(window.markdownitEmoji)
 .use(window.markdownitPlantuml,uml)
 .use(window.markdownitPlantuml,mindmap)
