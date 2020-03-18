@@ -25,12 +25,35 @@
     <script src="lib/markdown-it.js"></script>
     <script src="lib/markdown-it-plantuml.js"></script>
     <script src="lib/markdown-it-emoji.js"></script>
-
+    <script src="lib/markdown-it-image-lazy-loading.js"></script>
+    <script src="lib/markdown-it-container.js"></script>
 
     <script>
-        // var md = window.markdownit();
-        var md = window.markdownit().use(window.markdownitEmoji).use(window.markdownitPlantuml);
-        var result = md.render('# UML example: \n @startuml \n Bob -> Alice : hello \n @enduml');
+        const uml = {
+            openMarker: '@startuml',
+            closeMarker: '@enduml',
+            diagramName: 'uml',
+            imageFormat: 'png'
+        }
+
+        const mindmap = {
+            openMarker: '@startmindmap',
+            closeMarker: '@endmindmap',
+            diagramName: 'mindmap',
+            imageFormat: 'png'
+        }
+
+        // 加载markdownit及其插件
+        var md = window.markdownit()
+        .use(window.markdownitEmoji)
+        .use(window.markdownitPlantuml,uml)
+        .use(window.markdownitPlantuml,mindmap)
+        .use(window.markdownitImagelazyloading)
+        .use(window.markdownitContainer)
+
+        // # UML example: @startuml \n Bob -> Alice : hello \n @enduml
+        // ![](https://addyosmani.com/assets/images/without-lazyload@2x.png)
+        var result = md.render(`![](https://addyosmani.com/assets/images/without-lazyload@2x.png)`);
         document.getElementById('content').innerHTML = result
     </script>
     

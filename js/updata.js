@@ -16,7 +16,9 @@ const mindmap = {
 var md = window.markdownit()
 .use(window.markdownitEmoji)
 .use(window.markdownitPlantuml,uml)
-.use(window.markdownitPlantuml,mindmap);
+.use(window.markdownitPlantuml,mindmap)
+.use(window.markdownitImagelazyloading)
+.use(window.markdownitContainer)
 
 
 
