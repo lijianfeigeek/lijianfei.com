@@ -35,17 +35,17 @@ else{
     id = url.split('&')[0].split('?')[1].split('=')[0]
 }
 
-var gitalk = new Gitalk({
-    clientID: 'f4c9de56e72723b940b7', // 必须. GitHub Application Client ID.
-    clientSecret: '20d2721ab67bc17d6a3cefc489d4ee669598d9a2', // 必须. GitHub Application Client Secret.
-    repo: 'lijianfeigeek.github.io', // 必须. GitHub repository.
-    owner: 'lijianfeigeek', // 必须. GitHub repository 所有者，可以是个人或者组织。
-    admin: ['lijianfeigeek'], // 必须. GitHub repository 的所有者和合作者 (对这个 repository 有写权限的用户)。
-    id: id,      // 页面的唯一标识。长度必须小于50。
-    distractionFreeMode: true , // 类似Facebook评论框的全屏遮罩效果.
-})
+// var gitalk = new Gitalk({
+//     clientID: 'f4c9de56e72723b940b7', // 必须. GitHub Application Client ID.
+//     clientSecret: '20d2721ab67bc17d6a3cefc489d4ee669598d9a2', // 必须. GitHub Application Client Secret.
+//     repo: 'lijianfeigeek.github.io', // 必须. GitHub repository.
+//     owner: 'lijianfeigeek', // 必须. GitHub repository 所有者，可以是个人或者组织。
+//     admin: ['lijianfeigeek'], // 必须. GitHub repository 的所有者和合作者 (对这个 repository 有写权限的用户)。
+//     id: id,      // 页面的唯一标识。长度必须小于50。
+//     distractionFreeMode: true , // 类似Facebook评论框的全屏遮罩效果.
+// })
   
-gitalk.render('gitalk-container')
+// gitalk.render('gitalk-container')
 
 const query = new AV.Query('Atricle')
 query.get(id).then(function(result) {
