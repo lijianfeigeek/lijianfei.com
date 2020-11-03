@@ -1,32 +1,44 @@
+@font-face{
+    font-family: 'Xiaolai Font';
+    src : url('../TTF/XiaolaiP-SC.ttf');
+}
+
 img {
+    font-family: 'Xiaolai Font';
     display: inline-block;
     max-width: 100%;
 }
 
 header {
+    font-family: 'Xiaolai Font';
     padding-top: 100px;
     margin-bottom: 50px;
 }
 
 #title {
+    font-family: 'Xiaolai Font';
     font-weight: 300;
     font-size: 30px;
 }
 
 #count {
-  margin-left: 5px;
-  font-size: 15px;
+    font-family: 'Xiaolai Font';
+    margin-left: 5px;
+    font-size: 15px;
 }
 
 #outer {
-  width: 100%;
-  text-align: center;
+    font-family: 'Xiaolai Font';
+    width: 100%;
+    text-align: center;
 }
 #inner {
-  display: inline-block;
+    font-family: 'Xiaolai Font';
+    display: inline-block;
 }
 
 .content .item {
+    font-family: 'Xiaolai Font';
     margin-bottom: 50px;
     cursor: pointer;
     display: block;
@@ -35,28 +47,33 @@ header {
 }
 
 .content .item:hover {
+    font-family: 'Xiaolai Font';
     box-shadow: 4px 4px 10px rgba(0, 0, 0, .20);
 }
 
 .content .item .title {
+    font-family: 'Xiaolai Font';
     font-weight: 200;
     font-size: 25px;
     margin-bottom: 15px;
 }
 
 .content .item .atricle-content {
+    font-family: 'Xiaolai Font';
     font-weight: 200;
     font-size: 15px;
     margin-bottom: 15px;
 }
 
 .content .item .time {
+    font-family: 'Xiaolai Font';
     font-weight: 100;
     font-size: 15px;
     text-align: left;
 }
 /*按钮 position*/
 .layoutfixed {
+    font-family: 'Xiaolai Font';
     position: fixed;
     width: 100%;
     bottom: 20px;
@@ -64,6 +81,7 @@ header {
 }
 
 #tag {
+    font-family: 'Xiaolai Font';
     position: absolute;
     bottom: 70px;
     font-size: 25px;
@@ -75,6 +93,7 @@ header {
 }
 
 #btn {
+    font-family: 'Xiaolai Font';
     position: absolute;
     width: 60px;
     height: 60px;

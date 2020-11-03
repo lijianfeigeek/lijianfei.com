@@ -1,22 +1,32 @@
+@font-face{
+    font-family: 'Xiaolai Font';
+    src : url('../TTF/XiaolaiP-SC.ttf');
+}
+
 header {
+    font-family: 'Xiaolai Font';
     padding-top: 20px;
     margin-bottom: 50px;
 }
 
 #outer {
+  font-family: 'Xiaolai Font';
   width: 100%;
   text-align: center;
 }
 #inner {
+  font-family: 'Xiaolai Font';
   display: inline-block;
 }
 
 #title {
+    font-family: 'Xiaolai Font';
     font-size: 25px;
     font-weight: 300;
 }
 
 #tag {
+    font-family: 'Xiaolai Font';
     font-size: 25px;
     font-weight: 200;
     margin-top: 15px;
@@ -24,6 +34,7 @@ header {
 }
 
 #time {
+    font-family: 'Xiaolai Font';
     font-weight: 100;
     font-size: 15px;
     text-align: left;
@@ -32,6 +43,7 @@ header {
 /*适配markedowm字体样式*/
 
 #content {
+    font-family: 'Xiaolai Font';
     font-weight: 200;
     font-size: 18px;
     line-height: 33px;
@@ -39,6 +51,7 @@ header {
 }
 
 #content pre {
+    font-family: 'Xiaolai Font';
     padding: 10px 20px;
     background-color: #f8f8f8;
     overflow-x: auto;
@@ -47,26 +60,31 @@ header {
 }
 
 #content h1, #content h2, #content h3, #content h4, #content h5, #content h6 {
+    font-family: 'Xiaolai Font';
     font-weight: 200;
     margin-top: 50px;
     margin-bottom: 0;
 }
 
 #content th, #content td {
+    font-family: 'Xiaolai Font';
     border: 1px solid #dfe2e5;
     padding: 6px 4px;
 }
 
 #content table {
+    font-family: 'Xiaolai Font';
     border-collapse: collapse;
 }
 
 #content img {
+    font-family: 'Xiaolai Font';
     display: inline-block;
     max-width: 100%;
 }
 
 #content blockquote {
+    font-family: 'Xiaolai Font';
     margin-left: 10px;
     margin-right: 10px;
     padding: 0 16px;
