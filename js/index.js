@@ -26,6 +26,7 @@ if (decodeURI(tag) == '首页') {
                 }
                 document.getElementById('count').innerHTML = '嗯..！目前共计'+results.length+'篇日志。继续努力。'
                 document.getElementById('content').innerHTML = html
+                watermark.load()
             }, function(error) {
                 console.error(error)
             })
@@ -57,6 +58,7 @@ if (decodeURI(tag) == '首页') {
             }
             document.getElementById('count').innerHTML = '嗯..！目前共计'+results.length+'篇日志。继续努力。'
             document.getElementById('content').innerHTML = html
+            watermark.load()
         }
     }, function (error) {
         console.error(error)

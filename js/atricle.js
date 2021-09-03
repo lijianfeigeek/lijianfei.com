@@ -53,6 +53,7 @@ query.get(id).then(function(result) {
     const content = md.render(result.get('content'))
     const time = result.createdAt.toLocaleString()
     atricleContentHTML(title, content, time)
+    watermark.load()
 }, function(error) {
     console.error(error)
 })
